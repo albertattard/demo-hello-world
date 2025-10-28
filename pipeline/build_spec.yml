@@ -26,7 +26,7 @@ steps:
   - type: Command
     name: 'Get the build reference'
     command: |
-      export BUILD_REF=`echo ${OCI_BUILD_RUN_ID} | rev | cut -c 1-7`
+      export BUILD_REF="${OCI_SOURCE_COMMIT_HASH:0:7}"
       echo "build reference: ${BUILD_REF}"
 
   - type: Command

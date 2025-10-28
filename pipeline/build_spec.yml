@@ -21,6 +21,7 @@ steps:
   - type: Command
     name: 'Build the application'
     command: |
+      export JAVA_HOME='/usr/lib/jvm/jdk-25'
       ./mvnw clean package
 
   - type: Command

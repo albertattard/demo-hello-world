@@ -10,7 +10,8 @@ steps:
     command: |
       wget https://download.oracle.com/java/25/latest/jdk-25_linux-x64_bin.rpm
       dnf -y install jdk-25_linux-x64_bin.rpm
-      export JAVA_HOME='/usr/lib/jvm/jdk-25'
+      ls -l '/usr/lib/jvm'
+      export JAVA_HOME='/usr/lib/jvm/jdk-25-oracle-x64'
       export PATH="${JAVA_HOME}/bin:${PATH}"
       java --version
 
@@ -22,5 +23,5 @@ steps:
   - type: Command
     name: 'Get git commit hash'
     command: |
-      VERSION=$(git rev-parse --short HEAD)
+      VERSION="$(git rev-parse --short HEAD)"
       echo "VERSION=${VERSION}" >> "${OCI_WORKSPACE}/env_file"

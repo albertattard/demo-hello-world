@@ -17,6 +17,7 @@
     <description>A simple Spring Boot Web Application</description>
 
     <properties>
+        <jar.prefix>NO_BUILD_REF</jar.prefix>
         <java.version>25</java.version>
         <spring-modulith.version>1.4.3</spring-modulith.version>
 
@@ -58,6 +59,8 @@
     </dependencyManagement>
 
     <build>
+        <finalName>app-${jar.prefix}</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

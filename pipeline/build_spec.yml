@@ -26,12 +26,11 @@ steps:
   - type: Command
     name: 'Get the build reference'
     command: |
-      echo "OCI_TRIGGER_COMMIT_HASH:        ${OCI_TRIGGER_COMMIT_HASH}"
-      echo "OCI_PRIMARY_SOURCE_COMMIT_HASH: ${OCI_PRIMARY_SOURCE_COMMIT_HASH}"
+      # https://docs.oracle.com/en-us/iaas/Content/devops/using/build_specs.htm
       export BUILD_REF="${OCI_PRIMARY_SOURCE_COMMIT_HASH:0:7}"
-      echo "Build reference: ${BUILD_REF}"
 
   - type: Command
     name: 'Build the application'
     command: |
-      ./mvnw clean package
+      ./mvnw clean package -Djar.prefix=${BUILD_REF}
+      ls -l target

@@ -26,8 +26,10 @@ steps:
   - type: Command
     name: 'Get the build reference'
     command: |
-      export BUILD_REF="${OCI_SOURCE_COMMIT_HASH:0:7}"
-      echo "build reference: ${BUILD_REF}"
+      echo "OCI_TRIGGER_COMMIT_HASH:        ${OCI_TRIGGER_COMMIT_HASH}"
+      echo "OCI_PRIMARY_SOURCE_COMMIT_HASH: ${OCI_PRIMARY_SOURCE_COMMIT_HASH}"
+      export BUILD_REF="${OCI_PRIMARY_SOURCE_COMMIT_HASH:0:7}"
+      echo "Build reference: ${BUILD_REF}"
 
   - type: Command
     name: 'Build the application'

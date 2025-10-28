@@ -45,6 +45,6 @@ steps:
       .
 
 outputArtifacts:
-  - name: 'Container image'
+  - name: 'demo-devops-image'
     type: DOCKER_IMAGE
     location: "demo-devops:${BUILD_REF}"

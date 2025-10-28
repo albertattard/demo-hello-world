@@ -8,7 +8,7 @@ steps:
   - type: Command
     name: 'Install Java 25'
     command: |
-      sudo dnf install jdk-25-headful
+      dnf -y install jdk-25-headful
       export JAVA_HOME='/usr/lib/jvm/jdk-25'
       export PATH="${JAVA_HOME}/bin:${PATH}"
 

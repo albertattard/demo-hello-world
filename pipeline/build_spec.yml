@@ -6,7 +6,7 @@ failImmediatelyOnError: true
 
 env:
   exportedVariables:
-    JAVA_HOME
+    - JAVA_HOME
 
 steps:
   - type: Command

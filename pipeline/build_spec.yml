@@ -4,28 +4,25 @@ timeoutInSeconds: 600
 shell: bash
 failImmediatelyOnError: true
 
+env:
+  exportedVariables:
+    JAVA_HOME
+
 steps:
   - type: Command
     name: 'Install Java 25'
     command: |
       curl --silent --show-error --fail --location --output '/tmp/jdk-25.tar.gz' 'https://download.oracle.com/java/25/latest/jdk-25_linux-x64_bin.tar.gz'
       echo 'a159db241c72f804ec7c862d465f8237e31d36a463e0b86e18f68bc654dcef91 /tmp/jdk-25.tar.gz' | sha256sum --check
-      rm -rf '/usr/lib/jvm/jdk-25'
-      mkdir -p '/usr/lib/jvm/jdk-25'
-      tar --extract --file '/tmp/jdk-25.tar.gz' --directory '/usr/lib/jvm/jdk-25' --strip-components 1
-      rm -f '/tmp/jdk-25.tar.gz'
       export JAVA_HOME='/usr/lib/jvm/jdk-25'
+      rm -rf "${JAVA_HOME}"
+      mkdir -p "${JAVA_HOME}"
+      tar --extract --file '/tmp/jdk-25.tar.gz' --directory "${JAVA_HOME}" --strip-components 1
+      rm -f '/tmp/jdk-25.tar.gz'
       export PATH="${JAVA_HOME}/bin:${PATH}"
       java --version
 
   - type: Command
     name: 'Build the application'
     command: |
-      export JAVA_HOME='/usr/lib/jvm/jdk-25'
       ./mvnw clean package
-
-  - type: Command
-    name: 'Get git commit hash'
-    command: |
-      VERSION="$(git rev-parse --short HEAD)"
-      echo "VERSION=${VERSION}" >> "${OCI_WORKSPACE}/env_file"

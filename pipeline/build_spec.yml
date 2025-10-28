@@ -8,10 +8,13 @@ steps:
   - type: Command
     name: 'Install Java 25'
     command: |
-      wget https://download.oracle.com/java/25/latest/jdk-25_linux-x64_bin.rpm
-      dnf -y install jdk-25_linux-x64_bin.rpm
-      ls -l '/usr/lib/jvm'
-      export JAVA_HOME='/usr/lib/jvm/jdk-25-oracle-x64'
+      curl --silent --show-error --fail --location --output '/tmp/jdk-25.tar.gz' 'https://download.oracle.com/java/25/latest/jdk-25_linux-x64_bin.tar.gz'
+      echo 'a159db241c72f804ec7c862d465f8237e31d36a463e0b86e18f68bc654dcef91 /tmp/jdk-25.tar.gz' | sha256sum --check
+      rm -rf '/usr/lib/jvm/jdk-25'
+      mkdir -p '/usr/lib/jvm/jdk-25'
+      tar --extract --file '/tmp/jdk-25.tar.gz' --directory '/usr/lib/jvm/jdk-25' --strip-components 1
+      rm -f '/tmp/jdk-25.tar.gz'
+      export JAVA_HOME='/usr/lib/jvm/jdk-25'
       export PATH="${JAVA_HOME}/bin:${PATH}"
       java --version
 

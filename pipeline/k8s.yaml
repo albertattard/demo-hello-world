@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demo
-          image: ${IMAGE}
+          image: fra.ocir.io/idplwqm5vo15/demo:${BUILD_REF}
           ports:
             - containerPort: 8080
 ---

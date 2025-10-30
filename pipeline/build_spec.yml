@@ -48,3 +48,6 @@ outputArtifacts:
   - name: 'demo-devops-image'
     type: DOCKER_IMAGE
     location: "demo-devops:${BUILD_REF}"
+  - name: 'demo-k8s'
+    type: BINARY
+    location: 'pipeline/k8s.yaml'

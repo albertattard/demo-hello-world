@@ -15,3 +15,7 @@ your environment and best practices.
 - Oracle Kubernetes Engine (OKE)
 - OCI DevOps
 - Terraform
+
+## Pending
+
+- Put every thing into one repository

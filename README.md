@@ -19,3 +19,4 @@ your environment and best practices.
 ## Pending
 
 - Put every thing into one repository
+- Restrict the open ports

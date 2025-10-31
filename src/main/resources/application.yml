@@ -1,3 +1,12 @@
 spring:
   application:
     name: Demo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info
+  info:
+    git:
+      mode: simple

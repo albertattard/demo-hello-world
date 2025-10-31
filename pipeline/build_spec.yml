@@ -33,14 +33,13 @@ steps:
   - type: Command
     name: 'Build the application'
     command: |
-      ./mvnw clean package -Djar.prefix=${BUILD_REF}
+      ./mvnw clean package
 
   - type: Command
     name: 'Build the container'
     command: |
       docker build \
       --file './container/Dockerfile' \
-      --build-arg BUILD_REF=${BUILD_REF} \
       --tag "demo-devops:${BUILD_REF}" \
       .
 

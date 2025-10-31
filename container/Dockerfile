@@ -6,7 +6,6 @@ RUN curl --silent --show-error --fail --location --output '/tmp/jdk.rpm' 'https:
  && rm '/tmp/jdk.rpm'
 
 WORKDIR /opt/app
-ARG BUILD_REF
-COPY ./target/app-${BUILD_REF}.jar app.jar
+COPY ./target/app.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "app.jar"]

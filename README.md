@@ -23,4 +23,5 @@ your environment and best practices.
 
 ## Feedback
 
-Please send any feedback to albert.attard@oracle.com
+Please send any feedback to
+[albert.attard@oracle.com](mailto:albert.attard@oracle.com)

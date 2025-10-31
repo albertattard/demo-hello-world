@@ -12,6 +12,8 @@ spec:
       labels:
         app: demo
     spec:
+      imagePullSecrets:
+        - name: ocir-pull-secret
       containers:
         - name: demo
           image: fra.ocir.io/idplwqm5vo15/demo:${BUILD_REF}

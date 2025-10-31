@@ -21,6 +21,7 @@ your environment and best practices.
 - Put every thing into one repository
 - Restrict the open ports
 - Describe what's happening
+- Some changes
 
 ## Feedback
 
